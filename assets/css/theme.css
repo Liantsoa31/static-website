@@ -10,6 +10,9 @@
     --linear-gradient: linear-gradient(to bottom, #002759, #002b64);
 }
 
+* {
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
@@ -38,6 +41,7 @@ button {
 }
 input,
 textarea {
+    max-width: 100%;
     background-color: transparent;
     color: var(--clr-white);
     font-size: 1.2rem;
@@ -49,6 +53,11 @@ textarea {
 img {
     width: 100%;
     height: auto;
+}
+@media (max-width: 991px) {
+    img {
+        max-width: 500px;
+    }
 }
 
 .bg-color {
@@ -84,6 +93,11 @@ img {
 .text-center {
     text-align: center;
 }
+@media (max-width: 991px) {
+    .md-text-center {
+        text-align: center;
+    }
+}
 .clr-primary {
     color: var(--clr-accent);
 }
@@ -95,6 +109,7 @@ img {
 }
 .flex {
     display: flex;
+    flex-wrap: wrap;
 }
 .gap-05 {
     gap: 0.5rem;
@@ -102,11 +117,25 @@ img {
 .gap-1 {
     gap: 1rem;
 }
+.row-gap-1 {
+    row-gap: 1rem;
+}
+.row-gap-2 {
+    row-gap: 2rem;
+}
 .flex-column {
     flex-direction: column;
 }
 .justify-content-between {
     justify-content: space-between;
+}
+.justify-content-center {
+    justify-content: center;
+}
+@media (max-width: 991px) {
+    .md-justify-content-center {
+        justify-content: center;
+    }
 }
 .align-items-center {
     align-items: center;
@@ -114,14 +143,21 @@ img {
 .flex .col {
     padding: 0 1rem;
 }
-.flex .col-25 {
-    width: 25%;
+@media (min-width: 991px) {
+    .flex .col-25 {
+        width: 25%;
+    }
+    .flex .col-33 {
+        width: 33.333%;
+    }
+    .flex .col-50 {
+        width: 50%;
+    }
 }
-.flex .col-33 {
-    width: 33.333%;
-}
-.flex .col-50 {
-    width: 50%;
+@media (max-width: 991px) and (min-width: 768px) {
+    .flex .col-25 {
+        width: 50%;
+    }
 }
 ul.no-style {
     margin: 0;
@@ -185,7 +221,7 @@ ul.no-style li {
     padding-left: 1rem;
 }
 .container {
-    max-width: clamp(540px, 100%, 1170px);
+    max-width: clamp(540px, 80vw, 1170px);
     width: 100%;
     margin: 0 auto;
 }
@@ -250,9 +286,21 @@ ul.no-style li {
 .navbar .navbar-list .navbar-item .btn-search:hover {
     color: var(--clr-hover);
 }
-.footer-primary .col {
-    width: fit-content;
-    max-width: 25%;
+@media (min-width: 991px) {
+    .footer-primary .col {
+        max-width: fit-content;
+        width: 25%;
+    }
+}
+@media (max-width: 991px) {
+    .footer-primary .flex {
+        row-gap: 3rem;
+    }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+    .footer-primary .col {
+        width: 50%;
+    }
 }
 .footer-primary .col h3 {
     font-size: 1.8rem;
@@ -285,10 +333,67 @@ ul.no-style li {
     height: clamp(60px, 100%, 120px);
     margin: 0 auto;
 }
+@media (max-width: 991px) {
+    .testimonial:not(:last-child) {
+        margin-bottom: 6rem;
+    }
+}
 .testimonial .box {
     position: relative;
 }
 .testimonial .box .avatar {
     position: absolute;
     top: -60px;
+}
+
+@media (max-width: 991px) {
+    .desktop {
+        display: none;
+    }
+    .header-primary .navbar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: -1;
+        visibility: hidden;
+        transition: all 500ms linear;
+    }
+    .header-primary .navbar[data-show="true"] {
+        z-index: 10;
+        visibility: visible;
+    }
+    .header-primary .navbar .navbar-list {
+        position: relative;
+        display: block;
+        max-width: 260px;
+        background-color: var(--clr-white);
+        height: 100%;
+        transform: translateX(-110%);
+        transition: transform 300ms linear;
+    }
+    .header-primary .navbar[data-show="true"] .navbar-list {
+        transform: translateX(0);
+    }
+    .header-primary .navbar .navbar-list .close-menu {
+        position: absolute;
+        top: 0;
+        right: -1.5rem;
+        font-size: 1.5rem;
+    }
+    .header-primary .navbar .navbar-list .navbar-item a,
+    .header-primary .navbar .navbar-list .navbar-item button {
+        color: var(--clr-text);
+    }
+    .header-primary .navbar .navbar-list .navbar-item button {
+        padding: 1rem 1.5rem;
+    }
+}
+
+@media (min-width: 991px) {
+    .mobile {
+        display: none;
+    }
 }
