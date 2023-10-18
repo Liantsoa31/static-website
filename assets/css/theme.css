@@ -20,8 +20,19 @@ body {
     color: var(--clr-text);
     line-height: 1.3;
 }
+.page-content {
+    scroll-snap-type: y mandatory;
+    max-height: 100vh;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.page-content::-webkit-scrollbar {
+    display: none;
+}
 section {
-    min-height: calc(100vh - 8rem);
+    min-height: 100vh;
+    scroll-snap-align: start;
 }
 a {
     text-decoration: none;
@@ -317,7 +328,6 @@ ul.no-style li {
 }
 .hero-slider {
     padding-top: calc(4rem + 82px);
-    min-height: calc(100vh - 8rem - 82px);
 }
 .icon {
     width: clamp(40px, 100%, 80px);
