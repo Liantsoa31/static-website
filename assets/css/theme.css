@@ -202,6 +202,7 @@ ul.no-style li {
 }
 .btn-primary:hover {
     background-color: var(--clr-hover);
+    color: var(--clr-white);
 }
 .section {
     padding: 4rem 0;
